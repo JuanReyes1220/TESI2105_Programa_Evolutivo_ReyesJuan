@@ -1,5 +1,6 @@
 # TESI2105_Programa_Evolutivo_ReyesJuan
 Programa: BoriTech - Control de Inventario Electrónico
+
 Problema que atiende: Evita tener que sacar cuentas a mano o en calculadora al recibir mercancía, reduciendo los errores al calcular totales, impuestos y descuentos.
 
 Usuario principal: El personal de almacén, encargados de inventario o dueños de pequeños negocios de tecnología.
