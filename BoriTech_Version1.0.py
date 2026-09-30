@@ -41,26 +41,60 @@ def mostrar_resumen(nombre, cantidad, precio, subtotal, descuento, monto_impuest
     print("=" * 40)
 
 
+def demostrar_laboratorio():
+    """Muestra de manera sencilla los arreglos y cadenas del laboratorio."""
+    print("\n" + "=" * 40)
+    print(" DEMOSTRACIÓN DE ARREGLOS Y CADENAS ")
+    print("=" * 40)
+
+    # 1. Arreglo Unidimensional
+    equipos = ["Laptop", "Monitor", "Teclado", "Mouse", "Impresora"]
+    print("Arreglo completo:", equipos)
+    print("Primer elemento:", equipos[0])
+    print("Tercer elemento:", equipos[2])
+    
+    equipos[1] = "Monitor Samsung" # Modificar elemento
+    print("Modificado (índice 1):", equipos)
+    
+    print("Recorrido del arreglo:")
+    for eq in equipos:
+        print("-", eq)
+
+    # 2. Arreglo Multidimensional (Matriz)
+    inventario_matriz = [
+        ["Laptop", 5, 600.00],
+        ["Tablet", 10, 250.00]
+    ]
+    print("\nMatriz multidimensional:")
+    for fila in inventario_matriz:
+        print(f"Equipo: {fila[0]} | Cantidad: {fila[1]} | Precio: ${fila[2]:.2f}")
+
+    # 3. Cadenas de Caracteres
+    texto = "Laptop Gamer"
+    print(f"\nOperaciones con cadena ('{texto}'):")
+    print("- Longitud:", len(texto))
+    print("- Primer carácter:", texto[0])
+    print("- ¿Contiene 'Gamer'?:", "Gamer" in texto)
+    print("- En mayúsculas:", texto.upper())
+    print("=" * 40)
+
+
 def procesar_registro():
-    """Función principal que control el flujo del programa."""
+    """Función principal que controla el flujo del programa."""
     continuar = "s"
 
     while continuar.lower() == "s":
         print("\n--- REGISTRO DE NUEVO EQUIPO ---")
         
-        # Uso de función para solicitar datos
         nombre_equipo, precio_unitario, cantidad = solicitar_datos_equipo()
 
-        # Decisión 1: Validación de entrada de datos
         if precio_unitario > 0 and cantidad > 0:
             subtotal = precio_unitario * cantidad
 
-            # Uso de función para cálculo de totales
             descuento, subtotal_desc, monto_impuesto, costo_total = calcular_totales_inventario(
                 subtotal, IMPUESTO_IVU
             )
 
-            # Uso de función sin 'return' explícito para mostrar la salida
             mostrar_resumen(
                 nombre_equipo, cantidad, precio_unitario, subtotal, 
                 descuento, monto_impuesto, costo_total
@@ -68,13 +102,13 @@ def procesar_registro():
         else:
             print("\n[ERROR] El precio y la cantidad deben ser valores mayores a cero.")
 
-        # Criterio de repetición
         continuar = input("\n¿Desea ingresar otro equipo? (s/n): ")
 
+    # Al terminar el inventario, ejecuta la demostración del laboratorio
+    demostrar_laboratorio()
     print("\nPrograma finalizado. ¡Gracias por usar el sistema!")
 
 
 # --- EJECUCIÓN PRINCIPAL ---
 if __name__ == "__main__":
     procesar_registro()
-    
